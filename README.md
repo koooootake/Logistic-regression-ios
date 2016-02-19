@@ -1,8 +1,10 @@
 # LogisticRegression
 SwiftでLogistic Regression（ロジスティック回帰）をするサンプルプログラム  
-アルゴリズムを手打ち計算  
 
-![Logistic](https://github.com/koooootake/LogisticRegression/blob/master/ScreenShot/logistic.gif)  
+![Logistic](https://github.com/koooootake/LogisticRegression/blob/master/ScreenShot/logistic.gif)    
+
+ロジスティック回帰とは  
+https://github.com/koooootake/LogisticRegression/blob/master/ScreenShot/%E3%83%AD%E3%82%B8%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E5%9B%9E%E5%B8%B0.pdf  
 
 ##**Usage**
 ###**Set Data**
