@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LogisticRegression" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXF-KC-hSs">
+                                <rect key="frame" x="20" y="532" width="180" height="50"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="8rv-6e-wtT"/>
+                                    <constraint firstAttribute="height" constant="30" id="VMO-IU-DbS"/>
+                                    <constraint firstAttribute="height" constant="100" id="XRu-1L-6Dv"/>
+                                    <constraint firstAttribute="height" constant="50" id="s9s-5z-LhR"/>
+                                    <constraint firstAttribute="width" constant="270" id="xPU-Fs-0UF"/>
+                                </constraints>
+                                <state key="normal" title="TRAIN">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8rv-6e-wtT"/>
+                                        <exclude reference="VMO-IU-DbS"/>
+                                        <exclude reference="XRu-1L-6Dv"/>
+                                        <exclude reference="xPU-Fs-0UF"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="Train:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kzZ-iM-FkQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahD-cm-VO1">
+                                <rect key="frame" x="210" y="532" width="180" height="50"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="4ok-Ia-B8c"/>
+                                    <constraint firstAttribute="height" constant="50" id="dgo-pY-KhZ"/>
+                                    <constraint firstAttribute="width" constant="100" id="kOS-BA-oBH"/>
+                                    <constraint firstAttribute="width" constant="270" id="liV-db-pVC"/>
+                                    <constraint firstAttribute="height" constant="30" id="w88-jT-dFu"/>
+                                </constraints>
+                                <state key="normal" title="SET DATA">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4ok-Ia-B8c"/>
+                                        <exclude reference="kOS-BA-oBH"/>
+                                        <exclude reference="liV-db-pVC"/>
+                                        <exclude reference="w88-jT-dFu"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="Data:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xZO-w3-OWP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW7-lb-KBY">
+                                <rect key="frame" x="400" y="532" width="180" height="50"/>
+                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BlZ-w7-Wog"/>
+                                    <constraint firstAttribute="width" constant="100" id="FGi-fC-byk"/>
+                                    <constraint firstAttribute="height" constant="50" id="LVn-fA-BxU"/>
+                                    <constraint firstAttribute="width" constant="270" id="Oad-I0-EC6"/>
+                                    <constraint firstAttribute="height" constant="100" id="vMU-U9-TXi"/>
+                                </constraints>
+                                <state key="normal" title="ADD ERROR">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BlZ-w7-Wog"/>
+                                        <exclude reference="FGi-fC-byk"/>
+                                        <exclude reference="Oad-I0-EC6"/>
+                                        <exclude reference="vMU-U9-TXi"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="Error:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oOH-q7-VdN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.37647058820000001" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ahD-cm-VO1" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="2SQ-HC-rsv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XXF-KC-hSs" secondAttribute="bottom" constant="8" id="5rn-iQ-pcp"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XXF-KC-hSs" secondAttribute="bottom" id="6bG-Rb-4Cz"/>
+                            <constraint firstItem="ahD-cm-VO1" firstAttribute="width" secondItem="XXF-KC-hSs" secondAttribute="width" id="AAa-fD-DlI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XXF-KC-hSs" secondAttribute="bottom" constant="18" id="BHe-PD-1Dt"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gW7-lb-KBY" secondAttribute="bottom" constant="18" id="F1N-pH-ZdO"/>
+                            <constraint firstItem="gW7-lb-KBY" firstAttribute="height" secondItem="XXF-KC-hSs" secondAttribute="height" id="G7C-m7-lpk"/>
+                            <constraint firstItem="ahD-cm-VO1" firstAttribute="leading" secondItem="XXF-KC-hSs" secondAttribute="trailing" constant="20" id="GUw-6K-ewI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ahD-cm-VO1" secondAttribute="bottom" constant="18" id="I9n-H3-5lX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ahD-cm-VO1" secondAttribute="bottom" constant="8" id="MUT-Yf-sLM"/>
+                            <constraint firstItem="ahD-cm-VO1" firstAttribute="width" secondItem="XXF-KC-hSs" secondAttribute="width" id="Y2L-MR-Ryg"/>
+                            <constraint firstItem="XXF-KC-hSs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZlP-hf-33K"/>
+                            <constraint firstItem="ahD-cm-VO1" firstAttribute="height" secondItem="XXF-KC-hSs" secondAttribute="height" id="ca8-qp-Tsi"/>
+                            <constraint firstItem="gW7-lb-KBY" firstAttribute="leading" secondItem="ahD-cm-VO1" secondAttribute="trailing" constant="10" id="e4n-Rp-af7"/>
+                            <constraint firstItem="XXF-KC-hSs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="fWd-dG-cQr"/>
+                            <constraint firstItem="ahD-cm-VO1" firstAttribute="height" secondItem="XXF-KC-hSs" secondAttribute="height" id="fds-oZ-txF"/>
+                            <constraint firstItem="gW7-lb-KBY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="k27-D5-Dy5"/>
+                            <constraint firstItem="XXF-KC-hSs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rFd-TM-AcC"/>
+                            <constraint firstItem="gW7-lb-KBY" firstAttribute="width" secondItem="XXF-KC-hSs" secondAttribute="width" id="sk3-0t-6kg"/>
+                            <constraint firstItem="ahD-cm-VO1" firstAttribute="leading" secondItem="XXF-KC-hSs" secondAttribute="trailing" constant="10" id="tTD-UD-G1b"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fWd-dG-cQr"/>
+                                <exclude reference="rFd-TM-AcC"/>
+                                <exclude reference="2SQ-HC-rsv"/>
+                                <exclude reference="AAa-fD-DlI"/>
+                                <exclude reference="GUw-6K-ewI"/>
+                                <exclude reference="fds-oZ-txF"/>
+                                <exclude reference="5rn-iQ-pcp"/>
+                                <exclude reference="6bG-Rb-4Cz"/>
+                                <exclude reference="MUT-Yf-sLM"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="DataButton" destination="ahD-cm-VO1" id="LUj-xl-0u4"/>
+                        <outlet property="ErrorButton" destination="gW7-lb-KBY" id="Mok-no-ylN"/>
+                        <outlet property="TrainButton" destination="XXF-KC-hSs" id="p68-CE-QHN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="413" y="169"/>
+        </scene>
+    </scenes>
+</document>
