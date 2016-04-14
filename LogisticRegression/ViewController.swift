@@ -172,6 +172,7 @@ class ViewController: UIViewController {
         while count < 100{
             
             R = []
+            
             Z = []
             likelihood(weightVector)//最尤推定
             oldWeightVector.append(weightVector)
@@ -196,7 +197,7 @@ class ViewController: UIViewController {
                 break
             }
  
-            count++
+            count += 1
         }
         
         drawOldSplitLine(oldWeightVector)//軌跡線を描画
@@ -215,15 +216,15 @@ class ViewController: UIViewController {
         var re = 0
         while re < 3{
             resultMat.append(Array(count: 3, repeatedValue: 0))
-            re++
+            re += 1
         }
         
-        for (var i = 0; i < 3; i++){
+        for i in 0 ... 2{
             
             var right:Float = 1.0
             var left:Float = 1.0
             
-            for (var j = 0; j < 3; j++){
+            for j in 0 ... 2{
                 
                 right *= mat[(i+j)%3][j%3]
                 left *= mat[(i+3-j)%3][j%3]
@@ -236,8 +237,8 @@ class ViewController: UIViewController {
             return resultMat
             
         }else{
-            for (var i = 0; i < 3; i++){
-                for (var j = 0; j < 3; j++){
+            for i in 0 ... 2{
+                for j in 0 ... 2{
                     
                     let aaa = mat[(i+1)%3][(j+1)%3] * mat[(i+2)%3][(j+2)%3]
                     let bbb = mat[(i+1)%3][(j+2)%3] * mat[(i+2)%3][(j+1)%3]
@@ -258,7 +259,7 @@ class ViewController: UIViewController {
         var re = 0
         while re < mat[0].count{
             resultMat.append(Array(count: mat.count, repeatedValue: 0))
-            re++
+            re += 1
         }
         
         var i = 0
@@ -269,9 +270,9 @@ class ViewController: UIViewController {
                 
                 resultMat[i][j] = mat[j][i]
             
-                j++
+                j += 1
             }
-            i++
+            i += 1
         }
 
         return resultMat
@@ -285,7 +286,7 @@ class ViewController: UIViewController {
         var re = 0
         while re < matA.count{
             resultMat.append(Array(count: matB[0].count, repeatedValue: 0))
-            re++
+            re += 1
         }
 
         var i = 0
@@ -297,12 +298,12 @@ class ViewController: UIViewController {
                 var k = 0
                 while k < matB.count{//右の行分回す と　左の列
                     resultMat[i][j] += matA[i][k] * matB[k][j]
-                    k++
+                    k += 1
                 }
-                j++
+                j += 1
     
             }
-            i++
+            i += 1
   
         }
         
@@ -480,7 +481,7 @@ class ViewController: UIViewController {
                 }else{
                     r.append(0)
                 }
-                j++
+                j += 1
             }
             
             R.append(r)
@@ -505,6 +506,7 @@ class ViewController: UIViewController {
                 }else{
                     iLikelihood = log(1.0-prob)
                 }
+                
             }
             
             likelihood = likelihood - iLikelihood
