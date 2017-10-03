@@ -67,18 +67,18 @@ class ViewController: UIViewController {
         xyView.tag = 50000
         
         let xpath = UIBezierPath()
-        xpath.moveToPoint(CGPointMake(0,self.view.frame.height/2))
-        xpath.addLineToPoint(CGPointMake(self.view.frame.width,self.view.frame.height/2))
+        xpath.move(to: CGPoint(x: 0, y: self.view.frame.height/2))//moveToPoint(CGPointMake(0,self.view.frame.height/2))
+        xpath.addLine(to: CGPoint(x: self.view.frame.width, y: self.view.frame.height/2))//addLineToPoint(CGPointMake(self.view.frame.width,self.view.frame.height/2))
         UIColor(white: 0.1, alpha: 0.3).setStroke()
         xpath.stroke()
         
         let ypath = UIBezierPath()
-        ypath.moveToPoint(CGPointMake(self.view.frame.width/2,0))
-        ypath.addLineToPoint(CGPointMake(self.view.frame.width/2,self.view.frame.height))
+        ypath.move(to: CGPoint(x:self.view.frame.width/2,y:0))
+        ypath.addLine(to: CGPoint(x:self.view.frame.width/2,y:self.view.frame.height))
         UIColor(white: 0.1, alpha: 0.3).setStroke()
         ypath.stroke()
 
-        xyView.layer.contents = UIGraphicsGetImageFromCurrentImageContext().CGImage
+        xyView.layer.contents = UIGraphicsGetImageFromCurrentImageContext()?.cgImage
         
         UIGraphicsEndImageContext()
         self.view.addSubview(xyView)
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
 
     }
     
-    @IBAction func Data(sender: AnyObject) {
+    @IBAction func Data(_ sender: AnyObject) {
         
         print("Data")
         //線と点を消す
@@ -112,7 +112,7 @@ class ViewController: UIViewController {
         //正解直線をランダムに決定する
         answerLine = WeightVector3(a: getRandomNumber(Min: -1.0, Max: 1.0), b: getRandomNumber(Min: -1.0, Max: 1.0), c: getRandomNumber(Min: -1.0, Max: 1.0))
         print("AnswerLine :",answerLine.a,"*x + ",answerLine.b,"*y + ",answerLine.c)
-        drawAnswerLine(answerLine)
+        drawAnswerLine(answerVector: answerLine)
 
         while TrainDataArray.count < N{
             
@@ -126,12 +126,11 @@ class ViewController: UIViewController {
                 c = 1
             }
             let test = TrainData(x: x, y: y, c: c)
-           
             //描画
-            let point = UIView(frame:CGRectMake(
-                CGFloat(x*(Float(self.view.frame.width)/6) + Float(self.view.frame.width)/2)-12,
-                CGFloat(y*(Float(self.view.frame.width)/6) + Float(self.view.frame.height)/2)-12,
-                12,12))
+            let point = UIView(frame:CGRect(
+                x:CGFloat(x*(Float(self.view.frame.width)/6) + Float(self.view.frame.width)/2)-12,
+                y:CGFloat(y*(Float(self.view.frame.width)/6) + Float(self.view.frame.height)/2)-12,
+                width:12,height:12))
             point.layer.masksToBounds = true
             point.layer.cornerRadius = point.frame.size.width/2.0
             point.tag = TrainDataArray.count + 1
@@ -148,8 +147,7 @@ class ViewController: UIViewController {
         }
     }
     
-    //学習
-    @IBAction func Train(sender: AnyObject) {
+    @IBAction func Train(_ sender: Any) {
         print("Train\n | \n v")
         
         var count = 0
@@ -166,7 +164,7 @@ class ViewController: UIViewController {
             trainMat.append([1.0,trainData.x,trainData.y])
         }
         
-        let trainTransposedMat = transposed(trainMat)
+        let trainTransposedMat = transposed(mat: trainMat)
         
         //尤度関数が最大になるようにパラメータを決定する
         while count < 100{
@@ -174,15 +172,15 @@ class ViewController: UIViewController {
             R = []
             
             Z = []
-            likelihood(weightVector)//最尤推定
+            likelihood(weightVector: weightVector)//最尤推定
             oldWeightVector.append(weightVector)
             
             //パラメータを計算
-            let r1 = product(trainTransposedMat,matB:R)
-            let r2 = product(r1, matB: trainMat)
-            let r3 = invers(r2)
-            let r4 = product(r3, matB: trainTransposedMat)
-            let result = product(r4, matB: Z)
+            let r1 = product(matA: trainTransposedMat,matB:R)
+            let r2 = product(matA: r1, matB: trainMat)
+            let r3 = invers(mat: r2)
+            let r4 = product(matA: r3, matB: trainTransposedMat)
+            let result = product(matA: r4, matB: Z)
             
             //パラメータを更新
             beforeWeightVector = weightVector
@@ -196,16 +194,15 @@ class ViewController: UIViewController {
                 print("END")
                 break
             }
- 
+            
             count += 1
         }
         
-        drawOldSplitLine(oldWeightVector)//軌跡線を描画
-        likelihoodPointColor(weightVector)//確率的な推定を可視化
-        drawSplitLine(weightVector)//推定線を描画
-
-        print("PredictLine :",weightVector.a,"*x + ",weightVector.b,"*y + ",weightVector.c)
+        drawOldSplitLine(oldWeightVector: oldWeightVector)//軌跡線を描画
+        likelihoodPointColor(weightVector: weightVector)//確率的な推定を可視化
+        drawSplitLine(minWeightVector: weightVector)//推定線を描画
         
+        print("PredictLine :",weightVector.a,"*x + ",weightVector.b,"*y + ",weightVector.c)
     }
     
     //逆行列
@@ -215,7 +212,7 @@ class ViewController: UIViewController {
         
         var re = 0
         while re < 3{
-            resultMat.append(Array(count: 3, repeatedValue: 0))
+            resultMat.append(Array(repeating: 0, count: 3))
             re += 1
         }
         
@@ -258,7 +255,7 @@ class ViewController: UIViewController {
         
         var re = 0
         while re < mat[0].count{
-            resultMat.append(Array(count: mat.count, repeatedValue: 0))
+            resultMat.append(Array(repeating: 0, count: mat.count))
             re += 1
         }
         
@@ -285,7 +282,7 @@ class ViewController: UIViewController {
         
         var re = 0
         while re < matA.count{
-            resultMat.append(Array(count: matB[0].count, repeatedValue: 0))
+            resultMat.append(Array(repeating: 0, count: matB[0].count))
             re += 1
         }
 
@@ -343,20 +340,20 @@ class ViewController: UIViewController {
         let y_max = (-answerVector.a * Float(self.view.frame.width)/2 - answerVector.c*Float(self.view.frame.width)/6) / answerVector.b + Float(self.view.frame.size.height)/2
         
         let path = UIBezierPath()
-        path.moveToPoint(CGPointMake(0,CGFloat(y_min)))
-        path.addLineToPoint(CGPointMake(self.view.frame.width,CGFloat(y_max)))
+        path.move(to: CGPoint(x:0,y:CGFloat(y_min)))
+        path.addLine(to: CGPoint(x:self.view.frame.width,y:CGFloat(y_max)))
         path.lineWidth = 2.0
         UIColor(red: 126/255.0, green: 87/255.0, blue: 194/255.0, alpha: 1.0).setStroke()
         path.stroke()
         
-        lineView.layer.contents = UIGraphicsGetImageFromCurrentImageContext().CGImage
+        lineView.layer.contents = UIGraphicsGetImageFromCurrentImageContext()?.cgImage
         
         UIGraphicsEndImageContext()
         
         self.view.addSubview(lineView)
-        self.view.bringSubviewToFront(TrainButton)
-        self.view.bringSubviewToFront(DataButton)
-        self.view.bringSubviewToFront(ErrorButton)
+        self.view.bringSubview(toFront: TrainButton)
+        self.view.bringSubview(toFront: DataButton)
+        self.view.bringSubview(toFront: ErrorButton)
 
     }
     
@@ -381,21 +378,21 @@ class ViewController: UIViewController {
         let y_max = (-minWeightVector.a * Float(self.view.frame.width)/2 - minWeightVector.c*Float(self.view.frame.width)/6) / minWeightVector.b + Float(self.view.frame.size.height)/2
         
         let path = UIBezierPath()
-        path.moveToPoint(CGPointMake(0,CGFloat(y_min)))
-        path.addLineToPoint(CGPointMake(self.view.frame.width,CGFloat(y_max)))
+        path.move(to: CGPoint(x:0,y:CGFloat(y_min)))
+        path.addLine(to: CGPoint(x:self.view.frame.width,y:CGFloat(y_max)))
         path.lineWidth = 2.0
         UIColor(red: 255/255.0, green: 167/255.0, blue: 38/255.0, alpha: 1.0).setStroke()
         path.stroke()
         
         // viewのlayerに描画したものをセットする
-        lineView.layer.contents = UIGraphicsGetImageFromCurrentImageContext().CGImage
+        lineView.layer.contents = UIGraphicsGetImageFromCurrentImageContext()?.cgImage
         
         UIGraphicsEndImageContext()
         
         self.view.addSubview(lineView)
-        self.view.bringSubviewToFront(TrainButton)
-        self.view.bringSubviewToFront(DataButton)
-        self.view.bringSubviewToFront(ErrorButton)
+        self.view.bringSubview(toFront: TrainButton)
+        self.view.bringSubview(toFront: DataButton)
+        self.view.bringSubview(toFront: ErrorButton)
         
     }
     
@@ -422,22 +419,22 @@ class ViewController: UIViewController {
             let y_max = (-weightVector.a * Float(self.view.frame.width)/2 - weightVector.c*Float(self.view.frame.width)/6) / weightVector.b + Float(self.view.frame.size.height)/2
             
             let path = UIBezierPath()
-            path.moveToPoint(CGPointMake(0,CGFloat(y_min)))
-            path.addLineToPoint(CGPointMake(self.view.frame.width,CGFloat(y_max)))
+            path.move(to: CGPoint(x:0,y:CGFloat(y_min)))
+            path.addLine(to: CGPoint(x:self.view.frame.width,y:CGFloat(y_max)))
             path.lineWidth = 2.0
             UIColor(white: 1.0, alpha: 0.1).setStroke()
             path.stroke()
         }
         
         // viewのlayerに描画したものをセットする
-        lineView.layer.contents = UIGraphicsGetImageFromCurrentImageContext().CGImage
+        lineView.layer.contents = UIGraphicsGetImageFromCurrentImageContext()?.cgImage
         
         UIGraphicsEndImageContext()
         
         self.view.addSubview(lineView)
-        self.view.bringSubviewToFront(TrainButton)
-        self.view.bringSubviewToFront(DataButton)
-        self.view.bringSubviewToFront(ErrorButton)
+        self.view.bringSubview(toFront: TrainButton)
+        self.view.bringSubview(toFront: DataButton)
+        self.view.bringSubview(toFront: ErrorButton)
         
     }
     
@@ -456,21 +453,21 @@ class ViewController: UIViewController {
     func getProb(x:Float, y:Float, weightVector:WeightVector3) -> Float{
         
         let feature_vector = TrainData(x: x, y: y, c: 1)
-        let a = inner(feature_vector, right: weightVector)
+        let a = inner(left: feature_vector, right: weightVector)
         // print("p(c=1|x,y)",x ,y ,sigmoid(a))
         
-        return sigmoid(a)
+        return sigmoid(a: a)
     }
     
 
     //トレーニングセットのデータが得られる確率を最尤推定
-    func likelihood(weightVector:WeightVector3) -> Float{
+    func likelihood(weightVector:WeightVector3) {
  
         var likelihood:Float = 0.0
         
-        for (index,trainData)  in TrainDataArray.enumerate(){
+        for (index,trainData) in TrainDataArray.enumerated() {
             
-            let prob = getProb(trainData.x,y: trainData.y,weightVector: weightVector)
+            let prob = getProb(x: trainData.x,y: trainData.y,weightVector: weightVector)
             
             //行列生成
             var j = 0
@@ -512,18 +509,15 @@ class ViewController: UIViewController {
             likelihood = likelihood - iLikelihood
             
         }
-        
-        return likelihood
-        
     }
     
     
     //Pointの色を変更する
     func likelihoodPointColor(weightVector:WeightVector3){
 
-        for (index,trainData) in TrainDataArray.enumerate(){
+        for (index,trainData) in TrainDataArray.enumerated(){
             
-            let prob = getProb(trainData.x,y: trainData.y,weightVector: weightVector)
+            let prob = getProb(x: trainData.x,y: trainData.y,weightVector: weightVector)
             let subviews = self.view.subviews
 
             if trainData.c == 1{
@@ -558,12 +552,12 @@ class ViewController: UIViewController {
     }
     
     //エラーデータを追加する
-    @IBAction func Error(sender: AnyObject) {
+    @IBAction func Error(_ sender: AnyObject) {
         
         print("Error")
         let subviews = self.view.subviews
         
-        for (index,trainData) in TrainDataArray.enumerate(){
+        for (index,trainData) in TrainDataArray.enumerated(){
             
             if arc4random_uniform(100)%20 == 0{
                 
@@ -585,16 +579,12 @@ class ViewController: UIViewController {
                         }
                     }
                 }
-                
             }
-            
         }
-        
-        
     }
 
     
-    override func prefersStatusBarHidden() -> Bool {
+    func prefersStatusBarHidden() -> Bool {
         return true
     }
 

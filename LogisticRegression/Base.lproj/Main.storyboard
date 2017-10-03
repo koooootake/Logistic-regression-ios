@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,21 +19,19 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXF-KC-hSs">
-                                <rect key="frame" x="20" y="532" width="180" height="50"/>
-                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <rect key="frame" x="16" y="599" width="107.5" height="50"/>
+                                <color key="backgroundColor" red="0.75" green="0.75" blue="0.75" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="8rv-6e-wtT"/>
                                     <constraint firstAttribute="height" constant="30" id="VMO-IU-DbS"/>
                                     <constraint firstAttribute="height" constant="100" id="XRu-1L-6Dv"/>
                                     <constraint firstAttribute="height" constant="50" id="s9s-5z-LhR"/>
-                                    <constraint firstAttribute="width" constant="270" id="xPU-Fs-0UF"/>
                                 </constraints>
                                 <state key="normal" title="TRAIN">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -38,28 +40,24 @@
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="8rv-6e-wtT"/>
                                         <exclude reference="VMO-IU-DbS"/>
                                         <exclude reference="XRu-1L-6Dv"/>
-                                        <exclude reference="xPU-Fs-0UF"/>
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="Train:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kzZ-iM-FkQ"/>
+                                    <action selector="Train:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JuQ-kh-EC8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahD-cm-VO1">
-                                <rect key="frame" x="210" y="532" width="180" height="50"/>
-                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <rect key="frame" x="133.5" y="599" width="108" height="50"/>
+                                <color key="backgroundColor" red="0.75" green="0.75" blue="0.75" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="4ok-Ia-B8c"/>
                                     <constraint firstAttribute="height" constant="50" id="dgo-pY-KhZ"/>
-                                    <constraint firstAttribute="width" constant="100" id="kOS-BA-oBH"/>
-                                    <constraint firstAttribute="width" constant="270" id="liV-db-pVC"/>
                                     <constraint firstAttribute="height" constant="30" id="w88-jT-dFu"/>
                                 </constraints>
                                 <state key="normal" title="SET DATA">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -69,8 +67,6 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="4ok-Ia-B8c"/>
-                                        <exclude reference="kOS-BA-oBH"/>
-                                        <exclude reference="liV-db-pVC"/>
                                         <exclude reference="w88-jT-dFu"/>
                                     </mask>
                                 </variation>
@@ -79,17 +75,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW7-lb-KBY">
-                                <rect key="frame" x="400" y="532" width="180" height="50"/>
-                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <rect key="frame" x="251.5" y="599" width="107.5" height="50"/>
+                                <color key="backgroundColor" red="0.75" green="0.75" blue="0.75" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="BlZ-w7-Wog"/>
-                                    <constraint firstAttribute="width" constant="100" id="FGi-fC-byk"/>
                                     <constraint firstAttribute="height" constant="50" id="LVn-fA-BxU"/>
-                                    <constraint firstAttribute="width" constant="270" id="Oad-I0-EC6"/>
                                     <constraint firstAttribute="height" constant="100" id="vMU-U9-TXi"/>
                                 </constraints>
                                 <state key="normal" title="ADD ERROR">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -99,8 +93,6 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="BlZ-w7-Wog"/>
-                                        <exclude reference="FGi-fC-byk"/>
-                                        <exclude reference="Oad-I0-EC6"/>
                                         <exclude reference="vMU-U9-TXi"/>
                                     </mask>
                                 </variation>
@@ -109,7 +101,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.37647058820000001" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.37647058820000001" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ahD-cm-VO1" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="2SQ-HC-rsv"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XXF-KC-hSs" secondAttribute="bottom" constant="8" id="5rn-iQ-pcp"/>
